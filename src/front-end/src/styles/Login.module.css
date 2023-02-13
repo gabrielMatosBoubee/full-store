@@ -1,9 +1,9 @@
 .field {
  height: 43.073482513427734px;
- width: 336.6910705566406px;
+ width: 536.6910705566406px;
  border-radius: 8.614696502685547px;
  border: 1.44px solid #207198;
- margin-top: 4px;
+ margin: 10px 0 10px 0;
 }
 
 .registerLink {
@@ -20,16 +20,23 @@
     text-align: center;
     color: white;
     height: 43.073482513427734px;
-    width: 336.6910705566406px;
+    width: 536.6910705566406px;
     background: linear-gradient(0deg, #EE5757, #EE5757),
     linear-gradient(271.15deg, #FE904B 7.64%, #FB724C 90.68%);
     border-radius: 8.614696502685547px;
     border: none;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .fieldLabel {
     display: flex;
     flex-direction: column;
+}
+
+.error {
+    margin: 4px 0 4px 0;
+    color: red;
 }
 
 .fieldName {
@@ -43,7 +50,6 @@
     flex-direction: column;
     /* align-items: center; */
     height: 90%;
-    /* width: 100%; */
     justify-content: center;
 }
 
@@ -61,8 +67,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 240px;
-    width: 100%;
+    /* height: 240px; */
+    width: 536.6910705566406px;
 }
 
 .Or {
@@ -73,6 +79,7 @@
     width: 100%;
     color: #0E4A67;
     align-items: center;
+    justify-content: center;
 }
 
 .Or::before {
@@ -107,11 +114,20 @@
     height: 300px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
     .logo {
         display: none;
     }
+    .form {
+        width: 100%;
+    }
     .main {
+        width: 100%;
+    }
+    .field {
+        width: 100%;
+    }
+    .login {
         width: 100%;
     }
 }

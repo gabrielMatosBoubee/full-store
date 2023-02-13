@@ -1,6 +1,8 @@
 import React from 'react';
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from '../services/firebase';
+import googleLogo from '../images/Google-Logo.png'
+import style from '../styles/SignInGoogle.module.css'
 
 function SignInGoogle() {
     const provider = new GoogleAuthProvider();
@@ -33,7 +35,10 @@ signInWithPopup(auth, provider)
 
     return (
         <div>
-            <button onClick={makeLogin}>Sign in</button>
+            <button onClick={makeLogin} className={style.googleLogin}>
+                <img src={googleLogo} alt='logo of google' className={style.googleLogo}/> 
+                Continue with Google
+            </button>
         </div>
     );
 }
