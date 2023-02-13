@@ -1,10 +1,12 @@
-import logo from './logo.svg';
+import {BrowserRouter, Route} from 'react-router-dom'
 import './App.css';
 import Login from './pages/Login';
 
 function App() {
   return (
-    <Login />
+    <BrowserRouter >
+    <Route exact path='/' component={Login} />
+    </BrowserRouter>    
   );
 }
 

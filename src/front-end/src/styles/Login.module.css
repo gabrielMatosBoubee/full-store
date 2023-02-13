@@ -1,0 +1,117 @@
+.field {
+ height: 43.073482513427734px;
+ width: 336.6910705566406px;
+ border-radius: 8.614696502685547px;
+ border: 1.44px solid #207198;
+ margin-top: 4px;
+}
+
+.registerLink {
+    color: #FE904B;
+    text-decoration: none;
+}
+
+.login {
+    font-family: Verdana, Geneva, Tahoma, sans-serifs;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: white;
+    height: 43.073482513427734px;
+    width: 336.6910705566406px;
+    background: linear-gradient(0deg, #EE5757, #EE5757),
+    linear-gradient(271.15deg, #FE904B 7.64%, #FB724C 90.68%);
+    border-radius: 8.614696502685547px;
+    border: none;
+}
+
+.fieldLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.fieldName {
+    color: #207198;
+    position: relative;
+    left: 10px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 90%;
+    /* width: 100%; */
+    justify-content: center;
+}
+
+.title {
+    margin-bottom: 10px;
+    color: #0E4A67;
+}
+
+.text {
+    color: #207198;
+}
+
+.form {
+    margin: 30px 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 240px;
+    width: 100%;
+}
+
+.Or {
+    display: flex;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    width: 100%;
+    color: #0E4A67;
+    align-items: center;
+}
+
+.Or::before {
+    content: '';
+    height: 3px;
+    display: inline-block;
+    background-color: #207198;
+    margin: 0 10px 0 10px;
+    width: 40%;
+}
+
+.Or::after {
+    content: '';
+    height: 3px;
+    display: inline-block;
+    background-color: #207198;
+    margin: 0 10px 0 10px;
+    width: 40%;
+}
+
+.Login { 
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    height: 600px;
+}
+
+.logo {
+    width: 300px;
+    height: 300px;
+}
+
+@media (max-width: 600px) {
+    .logo {
+        display: none;
+    }
+    .main {
+        width: 100%;
+    }
+}
