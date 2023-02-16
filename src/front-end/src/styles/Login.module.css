@@ -1,54 +1,12 @@
-.field {
- height: 43.073482513427734px;
- width: 536.6910705566406px;
- border-radius: 8.614696502685547px;
- border: 1.44px solid #207198;
- margin: 10px 0 10px 0;
-}
 
 .registerLink {
     color: #FE904B;
     text-decoration: none;
 }
 
-.login {
-    font-family: Verdana, Geneva, Tahoma, sans-serifs;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: white;
-    height: 43.073482513427734px;
-    width: 536.6910705566406px;
-    background: linear-gradient(0deg, #EE5757, #EE5757),
-    linear-gradient(271.15deg, #FE904B 7.64%, #FB724C 90.68%);
-    border-radius: 8.614696502685547px;
-    border: none;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.fieldLabel {
-    display: flex;
-    flex-direction: column;
-}
-
-.error {
-    margin: 4px 0 4px 0;
-    color: red;
-}
-
-.fieldName {
-    color: #207198;
-    position: relative;
-    left: 10px;
-}
-
 .main {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     height: 90%;
     justify-content: center;
 }
@@ -60,15 +18,6 @@
 
 .text {
     color: #207198;
-}
-
-.form {
-    margin: 30px 0 10px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* height: 240px; */
-    width: 536.6910705566406px;
 }
 
 .Or {
@@ -103,10 +52,11 @@
 .Login { 
     display: flex;
     margin: auto;
+    margin-top: 10px;
     justify-content: space-between;
     align-items: center;
     width: 90vw;
-    height: 600px;
+    height: 100vh;
 }
 
 .logo {
@@ -118,16 +68,7 @@
     .logo {
         display: none;
     }
-    .form {
-        width: 100%;
-    }
     .main {
-        width: 100%;
-    }
-    .field {
-        width: 100%;
-    }
-    .login {
         width: 100%;
     }
 }
