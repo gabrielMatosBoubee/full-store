@@ -4,8 +4,8 @@
   "description": "This project is a full stack project, to make an app to buy and serach everthing",
   "main": "index.js",
   "scripts": {
-"start": "node src/backend/server.js",
-"lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
+    "start": "node src/backend/server.js",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
     "dev": "nodemon src/backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,9 +22,12 @@
   "devDependencies": {
     "eslint": "6.8.0",
     "eslint-config-trybe-backend": "1.0.1",
-    "nodemon": "2.0.15"
+    "nodemon": "2.0.15",
+    "sequelize-cli": "6.2.0"
   },
   "dependencies": {
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "mysql2": "2.1.0",
+    "sequelize": "6.3.4"
   }
 }
