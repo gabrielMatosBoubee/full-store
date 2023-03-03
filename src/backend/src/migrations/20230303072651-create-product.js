@@ -15,15 +15,16 @@ module.exports = {
         type: Sequelize.FLOAT
       },
       product_description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(2000)
       },
       discount_percent: {
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         allowNull: false,
