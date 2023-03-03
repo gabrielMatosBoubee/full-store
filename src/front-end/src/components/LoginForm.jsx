@@ -1,3 +1,4 @@
+import axios from 'axios'; 
 import React, { useState } from 'react';
 import style from '../styles/LoginForm.module.css'
 
@@ -10,14 +11,40 @@ function LoginForm() {
     const loginValidation = () => {
         setEmailValidation(true);
         setPasswordValidation(true);
+        const result = {error: false}
       if(!/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+/i.test(email)) {
-        setEmailValidation(false)
+        setEmailValidation(false);
+        result.error = true;
       }
       const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/gm;
       if (!regex.test(password)) {
-        setPasswordValidation(false)
+        setPasswordValidation(false);
+        result.error = true;
     }
+      return result
     }
+     
+    const loginRequest = async () => {
+        const { error } = loginValidation()
+        if(error) {
+            return {error}
+        }
+
+        
+        axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+       axios({
+        url: 'http://localhost:3000/products', 
+        method: 'POST',
+        mode: 'no-cors',
+        data: {name: 'ga'}
+        
+    
+    }).then((response) => console.log(response))
+    //   console.log(t)
+    }
+ 
     return (
         <form action="" className={style.form}>
              <label className={style.fieldLabel}>
@@ -49,8 +76,8 @@ function LoginForm() {
             </p>
             }
             </label>
-            <button className={style.login} type='button' onClick={loginValidation}>Login</button>
-                </form>
+            <button className={style.login} type='button' onClick={loginRequest}>Login</button>
+        </form>
     );
 }
 
