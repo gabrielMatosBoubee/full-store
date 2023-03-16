@@ -10,13 +10,14 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    product_name: DataTypes.STRING(2000),
-    product_price: DataTypes.FLOAT,
-    product_description: DataTypes.STRING,
-    discount_percent: DataTypes.INTEGER,
+    productName: DataTypes.STRING(2000),
+    productPrice: DataTypes.FLOAT,
+    productDescription: DataTypes.STRING,
+    discountPercent: DataTypes.INTEGER,
   }, {
     tableName: 'Products',
     modelName: 'Product',
+    underscored: true,
     timestamps: false,
   });
   return Product;
