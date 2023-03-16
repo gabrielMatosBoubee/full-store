@@ -1,7 +1,7 @@
-version: '1.0'
+version: '1.1'
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.23
     container_name: mysql_container
     environment:
       - MYSQL_ROOT_PASSWORD=password
@@ -9,7 +9,7 @@ services:
       - 3306:3306
   fullStoreApi:
     container_name: fullStoreApi
-    image: node:16
+    image: node:16.14
     restart: always
     ports:
       - 3001:3001
@@ -20,8 +20,8 @@ services:
       - DB_PASSWORD=password
       - SERVER_PORT=3001
     volumes:
-      - ./:/usr/app
-    working_dir: /usr/app
+      - ./:/app
+    working_dir: /app
     command: bash
     tty: true
     stdin_open: true

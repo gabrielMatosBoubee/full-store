@@ -1,13 +1,16 @@
 {
   "name": "full-store",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This project is a full stack project, to make an app to buy and serach everthing",
   "main": "index.js",
   "scripts": {
+    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "start": "node src/backend/server.js",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
     "dev": "nodemon src/backend/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "drop": "npx sequelize-cli db:drop",
+    "seed": "npx sequelize-cli db:seed:all"
   },
   "repository": {
     "type": "git",

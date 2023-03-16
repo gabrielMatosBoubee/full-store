@@ -5,6 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
 
   const Product = sequelize.define('Product', {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
     product_name: DataTypes.STRING(2000),
     product_price: DataTypes.FLOAT,
     product_description: DataTypes.STRING,
