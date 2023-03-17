@@ -17,6 +17,11 @@ module.exports = {
       product_description: {
         type: Sequelize.STRING(2000)
       },
+      image: {
+        allowNull: true,
+        type: Sequelize.STRING,
+        defaultValue: null
+      },
       discount_percent: {
         type: Sequelize.INTEGER,
         defaultValue: 0,
