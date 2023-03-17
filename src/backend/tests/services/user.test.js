@@ -47,7 +47,7 @@ describe('Tests user crud', function () {
             expect(typeof message).to.be.equal('string');
         })
 
-        it("Test user login send error message if does'nt exist the user", async function () {
+        it("Test user login send error message if doesn't exist the user", async function () {
             sinon.stub(User, 'findOne').resolves(null)
 
             const { type, message } = await user.login({
