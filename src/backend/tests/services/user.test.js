@@ -83,10 +83,10 @@ describe('Tests user crud', function () {
             });
 
             expect(type).to.be.equal(200);
-            expect(message).to.be.deep.equal(mock.createUser)
+            expect(message).to.be.deep.equal(mock.createUser.dataValues)
         })
-        it("Test user update send error if the email doen't", async function () {
-            sinon.stub(User, 'findOne').resolves(null);
+        it("Test user update send error if the email doesn't exist", async function () {
+            sinon.stub(User, 'update').resolves(null);
 
             const { type, message } = await user.update({
                 email: "testError@gmail.com",
@@ -101,7 +101,7 @@ describe('Tests user crud', function () {
     describe('Tests services user delete', function () {
 
         it("Test user delete", async function () {
-            sinon.stub(User, 'delete').resolves(mock.createUser);
+            sinon.stub(User, 'destroy').resolves(mock.createUser);
 
             const { type, message } = await user.delete({
                 email: "test@gmail.com",
@@ -111,8 +111,8 @@ describe('Tests user crud', function () {
             expect(type).to.be.equal(204);
             expect(message).to.be.deep.equal([])
         })
-        it("Test user delete send error if the email doen't", async function () {
-            sinon.stub(User, 'findOne').resolves(null);
+        it("Test user delete send error if the email doesn't exist", async function () {
+            sinon.stub(User, 'destroy').resolves(null);
 
             const { type, message } = await user.delete({
                 email: "testError@gmail.com",

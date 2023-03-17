@@ -28,4 +28,14 @@ const login = async ({ email, password }) => {
     return result
 }
 
-module.exports = { insertUser, login }
+const update = async ({ email, password }) => {
+    const { dataValues } = await User.update({ email, password }, { where: { email } }) || {}
+    if (!dataValues) {
+        return { type: 404, message: { message: 'User not found or not exist' } }
+    }
+    const result = { type: 200, message: dataValues }
+
+    return result
+}
+
+module.exports = { insertUser, login, update }
