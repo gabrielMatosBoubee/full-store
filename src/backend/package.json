@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
-    "start": "node src/backend/server.js",
+    "start": "node src/server.js",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
-    "dev": "nodemon src/backend/server.js",
+    "dev": "nodemon src/server.js",
     "test": "nyc --all --include src/models --include src/services --include src/controllers mocha tests/**/*.js --exit",
     "drop": "npx sequelize-cli db:drop",
     "seed": "npx sequelize-cli db:seed:all"
@@ -36,6 +36,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "4.17.1",
+    "jsonwebtoken": "^9.0.0",
     "mysql2": "2.1.0",
     "sequelize": "6.3.4"
   }
