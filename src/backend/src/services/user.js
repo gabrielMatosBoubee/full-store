@@ -38,4 +38,16 @@ const update = async ({ email, password }) => {
     return result
 }
 
-module.exports = { insertUser, login, update }
+const deleteUser = async ({ email }) => {
+    const { dataValues } = await User.destroy({ where: { email } }) || {}
+
+    if (!dataValues) {
+        return { type: 404, message: { message: 'User not found or not exist' } }
+    }
+
+    const result = { type: 204, message: [] }
+    return result
+
+}
+
+module.exports = { insertUser, login, update, deleteUser }

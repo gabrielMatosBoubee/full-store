@@ -103,9 +103,8 @@ describe('Tests user crud', function () {
         it("Test user delete", async function () {
             sinon.stub(User, 'destroy').resolves(mock.createUser);
 
-            const { type, message } = await user.delete({
+            const { type, message } = await user.deleteUser({
                 email: "test@gmail.com",
-                password: "Teste11111111111!"
             });
 
             expect(type).to.be.equal(204);
@@ -114,9 +113,8 @@ describe('Tests user crud', function () {
         it("Test user delete send error if the email doesn't exist", async function () {
             sinon.stub(User, 'destroy').resolves(null);
 
-            const { type, message } = await user.delete({
+            const { type, message } = await user.deleteUser({
                 email: "testError@gmail.com",
-                password: "Te12345678!",
             });
 
             expect(type).to.be.equal(404)
