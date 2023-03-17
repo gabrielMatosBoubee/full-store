@@ -1,7 +1,7 @@
-version: '1.1'
+version: '1.2'
 services:
   mysql:
-    image: mysql:8.0.23
+    image: mysql
     container_name: mysql_container
     environment:
       - MYSQL_ROOT_PASSWORD=password
@@ -11,6 +11,7 @@ services:
     container_name: fullStoreApi
     image: node:16.14
     restart: always
+    user: node
     ports:
       - 3001:3001
     environment:
