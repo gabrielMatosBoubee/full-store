@@ -17,7 +17,10 @@ describe('Tests user crud', function () {
         });
         const result = auth.verifyToken(message);
         expect(type).to.be.equal(201);
-        expect(result).to.be.deep.equal(mock.createUser.dataValues);
+        expect(result.data).to.be.deep.equal({
+            "email": "test@gmail.com",
+            "username": "John Doe", "id": 1
+        });
         expect(typeof message).to.be.equal('string');
     });
     it('Test user login', async function () {
