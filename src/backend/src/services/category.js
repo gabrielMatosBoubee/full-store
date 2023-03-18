@@ -9,7 +9,7 @@ const insertCategory = async ({ category }) => {
 };
 
 const getAll = async () => {
-    const { dataValues } = await Category.findAll()
+    const dataValues = await Category.findAll()
 
     const result = { type: 200, message: { categories: dataValues } }
 

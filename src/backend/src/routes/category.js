@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get('/', controller.category.getAll)
 
-router.post('/', controller.category.insertCategory)
+router.post('/', middleware.categoryValidation, controller.category.insertCategory)
 
 module.exports = router
