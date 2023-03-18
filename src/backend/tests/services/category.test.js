@@ -35,14 +35,14 @@ describe('Tests category crud', function () {
 
             expect(type).to.be.equal(200);
             expect(typeof message).to.be.equal('object');
-            expect(message).to.be.deep.equal({ categories: allCategories })
+            expect(message).to.be.deep.equal({ categories: allCategories.dataValues })
         })
     });
 
     describe('Tests category services update', function () {
 
         it("Test category update", async function () {
-            sinon.stub(Category, 'update').resolves(createCategory.dataValues);
+            sinon.stub(Category, 'update').resolves(createCategory);
 
             const { type, message } = await category.update({
                 category: "categoryTest", id: 100
@@ -78,7 +78,7 @@ describe('Tests category crud', function () {
         it("Test category delete send error if the category doesn't exist", async function () {
             sinon.stub(Category, 'destroy').resolves(null);
 
-            const { type, message } = await category.deleteUser({ id: 125 });
+            const { type, message } = await category.deleteCategory({ id: 125 });
 
             expect(type).to.be.equal(404)
             expect(message).to.be.deep.equal({ message: 'Category not found or not exist' })
