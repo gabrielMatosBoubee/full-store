@@ -11,7 +11,7 @@ describe('Tests category crud', function () {
 
     describe('Tests category services create', function () {
 
-        it('Test category create generate a token right', async function () {
+        it('Test category create right', async function () {
             sinon.stub(Category, 'create').resolves(JSON.parse(JSON.stringify(createCategory)))
 
             const { type, message } = await category.insertCategory({
