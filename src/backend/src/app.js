@@ -13,4 +13,6 @@ app.use('/login', routes.login);
 
 app.use('/user', routes.user);
 
+app.use('/category', routes.category);
+
 module.exports = app;
