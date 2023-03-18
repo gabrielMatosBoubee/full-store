@@ -78,7 +78,7 @@ describe('Tests category crud', function () {
         it("Test category delete send error if the category doesn't exist", async function () {
             sinon.stub(Category, 'destroy').resolves(null);
 
-            const { type, message } = await category.deleteUser({ id: 125 });
+            const { type, message } = await category.deleteCategory({ id: 125 });
 
             expect(type).to.be.equal(404)
             expect(message).to.be.deep.equal({ message: 'Category not found or not exist' })

@@ -28,5 +28,17 @@ const update = async ({ category, id }) => {
     return result
 }
 
+const deleteCategory = async ({ id }) => {
+    const { dataValues } = await Category.destroy({ where: { id } }) || {}
 
-module.exports = { insertCategory, getAll, update }
+    if (!dataValues) {
+        return { type: 404, message: { message: 'Category not found or not exist' } }
+    }
+
+    const result = { type: 204, message: [] }
+
+    return result
+}
+
+
+module.exports = { insertCategory, getAll, update, deleteCategory }
