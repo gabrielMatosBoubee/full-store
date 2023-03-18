@@ -1,7 +1,7 @@
 const exprees = require('express');
 const gamesRouter = require('./routes/gamesRouter.consumer');
-const loginRouter = require('./routes/loginRouter.consumer');
-const registerRouter = require('./routes/registerRouter.consumer');
+const routes = require('./routes')
+
 
 const app = exprees();
 
@@ -9,8 +9,8 @@ app.use(exprees.json());
 
 app.use('/games', gamesRouter);
 
-app.use('/login', loginRouter);
+app.use('/login', routes.login);
 
-app.use('register', registerRouter);
+app.use('/user', routes.user);
 
 module.exports = app;
