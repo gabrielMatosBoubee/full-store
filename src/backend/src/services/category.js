@@ -16,4 +16,17 @@ const getAll = async () => {
     return result
 }
 
-module.exports = { insertCategory, getAll }
+const update = async ({ category, id }) => {
+    const { dataValues } = await Category.update({ category }, { where: { id } }) || {}
+
+    if (!dataValues) {
+        return { type: 404, message: { message: 'Category not found or not exist' } }
+    }
+
+    const result = { type: 200, message: dataValues }
+
+    return result
+}
+
+
+module.exports = { insertCategory, getAll, update }

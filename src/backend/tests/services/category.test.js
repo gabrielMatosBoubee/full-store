@@ -42,7 +42,7 @@ describe('Tests category crud', function () {
     describe('Tests category services update', function () {
 
         it("Test category update", async function () {
-            sinon.stub(Category, 'update').resolves(createCategory.dataValues);
+            sinon.stub(Category, 'update').resolves(createCategory);
 
             const { type, message } = await category.update({
                 category: "categoryTest", id: 100
