@@ -35,7 +35,7 @@ describe('Tests category crud', function () {
 
             expect(type).to.be.equal(200);
             expect(typeof message).to.be.equal('object');
-            expect(message).to.be.deep.equal({ categories: allCategories })
+            expect(message).to.be.deep.equal({ categories: allCategories.dataValues })
         })
     });
 

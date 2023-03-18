@@ -8,4 +8,12 @@ const insertCategory = async ({ category }) => {
     return result
 };
 
-module.exports = { insertCategory }
+const getAll = async () => {
+    const { dataValues } = await Category.findAll()
+
+    const result = { type: 200, message: { categories: dataValues } }
+
+    return result
+}
+
+module.exports = { insertCategory, getAll }
