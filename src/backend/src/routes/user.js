@@ -9,4 +9,6 @@ const router = express.Router();
 router.post('/', emailValidation, passwordValidation,
     usernameValidation, controller.user.insertUser);
 
+router.put('/', emailValidation, passwordValidation, controller.user.update)
+
 module.exports = router;

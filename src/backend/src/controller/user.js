@@ -12,4 +12,10 @@ const login = async (req, res) => {
     return res.status(type).json(message)
 }
 
-module.exports = { insertUser, login }
+const update = async (req, res) => {
+    const { email, password } = req.body
+    const { type, message } = await services.user.update({ email, password })
+    return res.status(type).json(message)
+}
+
+module.exports = { insertUser, login, update }
