@@ -18,4 +18,10 @@ const update = async (req, res) => {
     return res.status(type).json(message)
 }
 
-module.exports = { insertUser, login, update }
+const deleteUser = async (req, res) => {
+    const { email } = req.body
+    const { type, message } = await services.user.deleteUser({ email })
+    return res.status(type).json(message)
+}
+
+module.exports = { insertUser, login, update, deleteUser }

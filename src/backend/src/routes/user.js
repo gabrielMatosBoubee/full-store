@@ -11,4 +11,6 @@ router.post('/', emailValidation, passwordValidation,
 
 router.put('/', emailValidation, passwordValidation, controller.user.update)
 
+router.delete('/', emailValidation, controller.user.deleteUser)
+
 module.exports = router;
