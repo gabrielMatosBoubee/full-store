@@ -11,4 +11,13 @@ const insertCategory = async (req, res) => {
     return res.status(type).json(message);
 }
 
-module.exports = { getAll, insertCategory }
+const updateCategory = async (req, res) => {
+    const { category } = req.body;
+    const { id } = req.params;
+
+    const { type, message } = await services.category.update({ category, id })
+
+    return res.status(type).json(message)
+}
+
+module.exports = { getAll, insertCategory, updateCategory }
