@@ -1,35 +1,31 @@
-const { Category } = require('../models')
+const { Category } = require('../models');
 
 const insertCategory = async ({ category }) => {
-    const { dataValues } = await Category.create({ category })
+    const { dataValues } = await Category.create({ category });
 
-    const result = { type: 201, message: dataValues }
+    const result = { type: 201, message: dataValues };
 
-    return result
+    return result;
 };
 
 const getAll = async () => {
-    const dataValues = await Category.findAll()
+    const dataValues = await Category.findAll();
 
-    const result = { type: 200, message: { categories: dataValues } }
+    const result = { type: 200, message: { categories: dataValues } };
 
-    return result
+    return result;
 }
 
 const update = async ({ category, id }) => {
-    const { dataValues } = await Category.update({ category }, { where: { id } }) || {}
+    await Category.update({ category }, { where: { id } });
 
-    if (!dataValues) {
-        return { type: 404, message: { message: 'Category not found or not exist' } }
-    }
+    const result = { type: 200, message: { category, id } };
 
-    const result = { type: 200, message: dataValues }
-
-    return result
+    return result;
 }
 
 const deleteCategory = async ({ id }) => {
-    const { dataValues } = await Category.destroy({ where: { id } }) || {}
+    const dataValues = await Category.destroy({ where: { id } })
 
     if (!dataValues) {
         return { type: 404, message: { message: 'Category not found or not exist' } }
@@ -40,5 +36,16 @@ const deleteCategory = async ({ id }) => {
     return result
 }
 
+const existCategory = async ({ id }) => {
+    const dataValues = await Category.findOne({ where: { id } });
+    if (!dataValues) {
+        return { type: 404, message: { message: 'Category not found or not exist' } };
+    }
 
-module.exports = { insertCategory, getAll, update, deleteCategory }
+    const result = { type: 200, message: 'Category found' };
+
+    return result
+}
+
+
+module.exports = { insertCategory, getAll, update, deleteCategory, existCategory }

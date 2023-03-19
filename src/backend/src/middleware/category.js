@@ -1,4 +1,5 @@
 const Joi = require('joi')
+const services = require('../services')
 
 const categoryValidation = async (req, res, next) => {
     const { category } = req.body;
@@ -30,4 +31,15 @@ const idValidation = async (req, res, next) => {
     next();
 }
 
-module.exports = { categoryValidation, idValidation }
+const existCategory = async (req, res, next) => {
+    const { id } = req.params;
+    const { type, message } = await services.category.existCategory({ id });
+
+    if (type === 404) {
+        return res.status(type).json(message);
+    }
+
+    next();
+}
+
+module.exports = { categoryValidation, idValidation, existCategory }
