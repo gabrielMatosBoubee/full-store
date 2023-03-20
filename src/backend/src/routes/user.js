@@ -9,7 +9,7 @@ router.post('/', middleware.emailValidation, middleware.passwordValidation,
 
 router.put('/', middleware.validateToken,
     middleware.hasAuthorization, middleware.emailValidation,
-    middleware.passwordValidation, controller.user.update)
+    middleware.passwordValidation, middleware.existUser, controller.user.update)
 
 router.delete('/', middleware.validateToken,
     middleware.hasAuthorization,

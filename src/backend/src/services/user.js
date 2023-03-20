@@ -29,17 +29,15 @@ const login = async ({ email, password }) => {
 }
 
 const update = async ({ email, password }) => {
-    const { dataValues } = await User.update({ email, password }, { where: { email } }) || {}
-    if (!dataValues) {
-        return { type: 404, message: { message: 'User not found or not exist' } }
-    }
-    const result = { type: 200, message: dataValues }
+    await User.update({ email, password }, { where: { email } });
+
+    const result = { type: 200, message: { email, password } };
 
     return result
 }
 
 const deleteUser = async ({ email }) => {
-    const { dataValues } = await User.destroy({ where: { email } }) || {}
+    const dataValues = await User.destroy({ where: { email } }) || {}
 
     if (!dataValues) {
         return { type: 404, message: { message: 'User not found or not exist' } }
@@ -50,4 +48,17 @@ const deleteUser = async ({ email }) => {
 
 }
 
-module.exports = { insertUser, login, update, deleteUser }
+const existUser = async ({ email }) => {
+    const dataValues = await Category.findOne({ where: email });
+
+    if (!dataValues) {
+        return { type: 404, message: { message: 'User not found or not exist' } }
+    }
+
+    const result = { type: 200, message: 'User found' }
+
+    return result
+}
+
+
+module.exports = { insertUser, login, update, deleteUser, existUser }
