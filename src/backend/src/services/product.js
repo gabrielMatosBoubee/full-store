@@ -15,7 +15,13 @@ const getOne = async ({ id }) => {
         include: [
             { model: Category, as: "categories", through: { attributes: [] } }]
     })
+
+    if (!dataValues) {
+        return { type: 404, message: { message: "Product not found or not exist" } }
+    }
+
     const result = { type: 200, message: dataValues }
+
     return result
 }
 
