@@ -26,7 +26,6 @@ const login = async ({ email, password }) => {
 
     delete dataValues.password
     const token = createToken(dataValues)
-    console.log(typeof token)
     const result = { type: 200, message: { token } }
 
     return result
