@@ -23,13 +23,13 @@ describe('Tests user crud', function () {
                 username: "John Doe",
                 password: "Te12345678!",
             });
-            const result = auth.verifyToken(message);
+            const result = auth.verifyToken(message.token);
             expect(type).to.be.equal(201);
             expect(result.data).to.be.deep.equal({
                 "email": "test@gmail.com",
                 "username": "John Doe", "id": 1
             });
-            expect(typeof message).to.be.equal('string');
+            expect(typeof message.token).to.be.equal('string');
         });
     })
 
@@ -44,7 +44,7 @@ describe('Tests user crud', function () {
             })
 
             expect(type).to.be.equal(200);
-            expect(typeof message).to.be.equal('string');
+            expect(typeof message.token).to.be.equal('string');
         })
 
         it("Test user login send error message if doesn't exist the user", async function () {
@@ -75,7 +75,7 @@ describe('Tests user crud', function () {
     describe('Tests services user update', function () {
 
         it("Test user update", async function () {
-            sinon.stub(User, 'update').resolves(mock.createUser);
+            sinon.stub(User, 'update').resolves(mock.createUser.dataValues);
 
             const { type, message } = await user.update({
                 email: "test@gmail.com",
@@ -83,14 +83,16 @@ describe('Tests user crud', function () {
             });
 
             expect(type).to.be.equal(200);
-            expect(message).to.be.deep.equal(mock.createUser.dataValues)
+            expect(message).to.be.deep.equal({
+                email: "test@gmail.com",
+                password: "Teste11111111111!"
+            })
         })
         it("Test user update send error if the email doesn't exist", async function () {
-            sinon.stub(User, 'update').resolves(null);
+            sinon.stub(User, 'findOne').resolves(null);
 
-            const { type, message } = await user.update({
+            const { type, message } = await user.existUser({
                 email: "testError@gmail.com",
-                password: "Te12345678!",
             });
 
             expect(type).to.be.equal(404)
@@ -101,7 +103,7 @@ describe('Tests user crud', function () {
     describe('Tests services user delete', function () {
 
         it("Test user delete", async function () {
-            sinon.stub(User, 'destroy').resolves(mock.createUser);
+            sinon.stub(User, 'destroy').resolves(mock.createUser.dataValues);
 
             const { type, message } = await user.deleteUser({
                 email: "test@gmail.com",
@@ -111,7 +113,7 @@ describe('Tests user crud', function () {
             expect(message).to.be.deep.equal([])
         })
         it("Test user delete send error if the email doesn't exist", async function () {
-            sinon.stub(User, 'destroy').resolves(null);
+            sinon.stub(User, 'destroy').resolves(0);
 
             const { type, message } = await user.deleteUser({
                 email: "testError@gmail.com",
