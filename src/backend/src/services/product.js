@@ -9,6 +9,16 @@ const getAll = async () => {
     return result
 }
 
-// getAll()
+const getOne = async ({ id }) => {
+    const dataValues = await Product.findOne({
+        where: { id },
+        include: [
+            { model: Category, as: "categories", through: { attributes: [] } }]
+    })
+    const result = { type: 200, message: dataValues }
+    return result
+}
 
-module.exports = { getAll }
+getOne({ id: 1 })
+
+module.exports = { getAll, getOne }
