@@ -9,7 +9,9 @@ A brief description of what this project does and who it's for. In this project 
 
 <details>
 
-In the **"/login"** you receive a token JWT if all works right. You need to send in the body **with a post methode** this json example: 
+<summary> More about </summary>
+
+In the **`/login`** you receive a token JWT if all works right. You need to send in the body **with a post methode** this json example: 
 
 ```
 { "email": "yourEmail", password: "YourPassword23!"}
@@ -37,7 +39,9 @@ You will receive this json example:
 
 <details>
 
-in the **"/user"** with the  **methode post** you can make a insert a new user. You need to pass this json example in the body:
+<summary> More about </summary>
+
+in the **`/user`** with the  **methode post** you can make a insert a new user. You need to pass this json example in the body:
 
 ```
 { "email": "yourEmail", "password": "YourPassword23!" "username": "user" }
@@ -55,7 +59,9 @@ You will receive this json example:
 
 <details>
 
-in the **"/user"** with the  **methode put** you can update an user. **You need to have your JWT** and pass to the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body: 
+<summary> More about </summary>
+
+in the **`/user`** with the  **methode put** you can update an user. **You need to have your JWT** and pass to the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body: 
 
 ```
 { "email": "yourEmail", "password": "YourPassword23!" }
@@ -73,7 +79,9 @@ You will receive this json example:
 
 <details>
 
-in the **"/user"** with the  **methode delete** you can update an user. **You need to have your JWT** and pass to the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body: 
+<summary> More about </summary>
+
+in the **`/user`** with the  **methode delete** you can update an user. **You need to have your JWT** and pass to the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body: 
 
 ```
 { "email": "yourEmail" }
@@ -89,7 +97,9 @@ in the **"/user"** with the  **methode delete** you can update an user. **You ne
 
 <details>
 
-in the **"/category"** with the **methode get** you can get all Categories. You will receive a json like that:
+<summary> More about </summary>
+
+in the **`/category`** with the **methode get** you can get all Categories. You will receive a json like that:
 
 ```
 { categories: [{id: 1, category: "categoryName"}] }
@@ -101,7 +111,9 @@ in the **"/category"** with the **methode get** you can get all Categories. You 
 
 <details>
 
-in the **/category"** with the **methode post** you can insert a new category. **You need to have your JWT** and pass to the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body:
+<summary> More about </summary>
+
+in the **`/category`** with the **methode post** you can insert a new category. **You need to have your JWT** and pass to the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body:
 
 ```
 { "category": "categoryName" }
@@ -122,7 +134,9 @@ You will receive this json example:
 
 <details>
 
-in the **/category/:id"** with the **methode put** you can update category. **You need to have your JWT** and pass it in the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body:
+<summary> More about </summary>
+
+in the **`/category/:id`** with the **methode put** you can update category. **You need to have your JWT** and pass it in the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body:
 
 ```
 { "category": "categoryName" }
@@ -143,10 +157,133 @@ You will receive this json example:
 
 <details>
 
-in the **/category/:id"** with the **methode delete** you can delete category. **You need to have your JWT** and pass it in the headers. If your token don't have the admin key in data, you can't use this route. You will receive this json example: 
+<summary> More about </summary>
+
+in the **`/category/:id`** with the **methode delete** you can delete category. **You need to have your JWT** and pass it in the headers. If your token don't have the admin key in data, you can't use this route. You will receive this json example: 
 
 ```
 []
 ```
 
 </details>
+
+# Products route
+
+## /products
+
+#### get all products
+
+<details>
+
+<summary> More about </summary>
+
+in the **`/products`** with the **methode get** you get all products. You will receive this json example: 
+
+```
+[{
+    "id": 1,
+    "productName": "The evil within",
+    "productPrice": 200,
+    "discountPercent": 0,
+    "image": null,
+    "categories": [
+      {
+        "id": 1,
+        "category": "Horror"
+      },
+      {
+        "id": 3,
+        "category": "Action"
+      },
+      {
+        "id": 4,
+        "category": "RPG"
+      }
+    ]
+  }]
+```
+
+</details>
+
+#### get one product
+
+<details>
+
+<summary> More about </summary>
+
+in the **`/products/:id`** with the **methode get** you can get one product. You will receive this json example: 
+
+```
+{
+  "id": 1,
+  "productName": "The evil within",
+  "productPrice": 200,
+  "productDescription": "The Evil Within is a survival horror video game developed by Tango Gameworks and published by Bethesda Softworks.The game was directed by Resident Evil series creator Shinji Mikami and was released worldwide in October 2014 for PlayStation 3, PlayStation 4, Windows, Xbox 360, and Xbox One.",
+  "discountPercent": 0,
+  "image": null,
+  "categories": [
+    {
+      "id": 1,
+      "category": "Horror"
+    },
+    {
+      "id": 3,
+      "category": "Action"
+    },
+    {
+      "id": 4,
+      "category": "RPG"
+    }
+  ]
+}
+```
+
+</details>
+
+#### update product
+
+<details>
+
+<summary> More about </summary>
+
+in the **`/products/:id`** with the **methode put** you can update one product. **You need to have your JWT** and pass to the headers. If your token don't have the admin key in data, you can't use this route. You need to pass this json example in the body:
+
+```
+{productName": "The evil within",
+  "productPrice": 200,
+  "productDescription": "The Evil Within is a survival horror video game developed by Tango Gameworks and published by Bethesda Softworks.The game was directed by Resident Evil series creator Shinji Mikami and was released worldwide in October 2014 for PlayStation 3, PlayStation 4, Windows, Xbox 360, and Xbox One.",
+  "discountPercent": 0,
+  "image": null,
+  "categories": [1, 2, 3]}
+```
+
+
+You will receive this json example: 
+
+```
+{productName": "The evil within",
+  "productPrice": 200,
+  "productDescription": "The Evil Within is a survival horror video game developed by Tango Gameworks and published by Bethesda Softworks.The game was directed by Resident Evil series creator Shinji Mikami and was released worldwide in October 2014 for PlayStation 3, PlayStation 4, Windows, Xbox 360, and Xbox One.",
+  "discountPercent": 0,
+  "image": null,
+  "categories": [1, 2, 3],
+  id: 1
+}
+```
+
+</details>
+
+#### delete product
+
+<details>
+
+<summary> More about </summary>
+
+in the **`/products/:id`** with the **methode delete** you can delete one product. **You need to have your JWT** and pass to the headers. If your token don't have the admin key in data, you can't use this route.You will receive this json example: 
+
+```
+[]
+```
+
+</details>
+
