@@ -63,4 +63,18 @@ const updateProduct = async ({ productName, productPrice, id, discountPercent, c
     return result
 }
 
-module.exports = { getAll, getOne, insertProduct, updateProduct }
+const deleteProduct = async ({ id }) => {
+    const dataValues = await Product.destroy({ where: { id: id } });
+
+    if (dataValues === 0) {
+        return { type: 404, message: "Product not found or not exist" }
+    };
+
+    await ProductCategory.destroy({ where: { productId: id } });
+
+    const result = { type: 204, message: [] }
+
+    return result
+}
+
+module.exports = { getAll, getOne, insertProduct, updateProduct, deleteProduct }
