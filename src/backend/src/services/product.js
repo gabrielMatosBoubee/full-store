@@ -2,6 +2,7 @@ const { Product, Category } = require('../models')
 
 const getAll = async () => {
     const dataValues = await Product.findAll({
+        attributes: { exclude: 'productDescription' },
         include: [
             { model: Category, as: "categories", through: { attributes: [] } }]
     })
