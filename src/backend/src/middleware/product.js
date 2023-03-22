@@ -24,7 +24,7 @@ const categoriesValidation = async (req, res, next) => {
     const { categories } = req.body;
     const result = await services.category.findAndCountAll({ categories });
 
-    if (categories.length !== result.length) {
+    if (categories.length !== result) {
         return res.status(404).json({ message: 'One or more categories not found or not exist' })
     }
 
