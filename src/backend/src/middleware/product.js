@@ -2,17 +2,18 @@ const services = require('../services');
 const Joi = require('joi');
 
 const productValidation = (req, res, next) => {
-    const { productName, productPrice, discountPercent, categories, image } = req.body;
+    const { productName, productPrice, productDescription, discountPercent, categories, image } = req.body;
 
     const schema = Joi.object().keys({
         productName: Joi.string().required(),
         productPrice: Joi.number().required(),
-        discountPercent: Joi.number().required(),
+        productDescription: Joi.string().required(),
+        discountPercent: Joi.number().max(100).required(),
         categories: Joi.array().items(Joi.number()),
         image: Joi.required(),
     })
 
-    const { error } = schema.validate({ productName, productPrice, discountPercent, categories, image });
+    const { error } = schema.validate({ productName, productPrice, productDescription, discountPercent, categories, image });
     if (error) {
         const [{ message }] = error.details
         return res.status(400).json({ message })
