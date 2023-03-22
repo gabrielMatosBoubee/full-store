@@ -1,12 +1,14 @@
 const exprees = require('express');
 const routes = require('./routes')
-
+const cors = require('cors')
 
 const app = exprees();
 
 app.use(exprees.json());
 
-app.use('/games', routes.product);
+app.use(cors())
+
+app.use('/products', routes.product);
 
 app.use('/login', routes.login);
 
