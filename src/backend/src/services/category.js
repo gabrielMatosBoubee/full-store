@@ -48,4 +48,17 @@ const existCategory = async ({ id }) => {
 }
 
 
-module.exports = { insertCategory, getAll, update, deleteCategory, existCategory }
+const findAndCountAll = async ({ categories }) => {
+    const { count } = await Category.findAndCountAll({ where: { id: categories } })
+
+    return count
+}
+
+module.exports = {
+    insertCategory,
+    getAll,
+    update,
+    deleteCategory,
+    existCategory,
+    findAndCountAll
+}
