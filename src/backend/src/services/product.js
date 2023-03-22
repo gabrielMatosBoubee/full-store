@@ -35,8 +35,8 @@ const insertProductCategory = async ({ categories, id }) => {
     return { categories, id }
 }
 
-const insertProduct = async ({ productName, productPrice, discountPercent, categories, image }) => {
-    const { dataValues } = await Product.create({ productName, productPrice, discountPercent, image })
+const insertProduct = async ({ productName, productPrice, productDescription, discountPercent, categories, image }) => {
+    const { dataValues } = await Product.create({ productName, productPrice, productDescription, discountPercent, image })
 
     await insertProductCategory({ categories, id: dataValues.id })
 
@@ -49,8 +49,8 @@ const insertProduct = async ({ productName, productPrice, discountPercent, categ
 }
 
 
-const updateProduct = async ({ productName, productPrice, id, discountPercent, categories, image }) => {
-    await Product.update({ productName, productPrice, discountPercent, image }, { where: { id } });
+const updateProduct = async ({ productName, productDescription, productPrice, id, discountPercent, categories, image }) => {
+    await Product.update({ productName, productPrice, productDescription, discountPercent, image }, { where: { id } });
 
     await ProductCategory.destroy({ where: { productId: id } })
 
