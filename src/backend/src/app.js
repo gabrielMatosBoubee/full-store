@@ -8,7 +8,7 @@ app.use(exprees.json());
 
 app.use(cors())
 
-app.use('/games', routes.product);
+app.use('/products', routes.product);
 
 app.use('/login', routes.login);
 
