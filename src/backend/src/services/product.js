@@ -1,4 +1,4 @@
-const { Product, Category } = require('../models')
+const { Product, Category, ProductCategory } = require('../models')
 
 const getAll = async () => {
     const dataValues = await Product.findAll({
@@ -26,6 +26,18 @@ const getOne = async ({ id }) => {
     return result
 }
 
-getOne({ id: 1 })
+const insertProduct = async ({ productName, productPrice, discountPercent, categories, image }) => {
+    const dataValues = await Product.create({ productName, productPrice, discountPercent, image })
+    const categoryArray = categories.map(async (catId) =>
+        ({ categoryId: catId, productId: dataValues.id }));
 
-module.exports = { getAll, getOne }
+    const newProductCategory = await Promise.all(categoryArray);
+    await ProductCategory.bulkCreate(newProductCategory);
+
+    const result = { type: 201, message: dataValues };
+
+    return result;
+
+}
+
+module.exports = { getAll, getOne, insertProduct }
