@@ -32,4 +32,12 @@ const categoriesValidation = async (req, res, next) => {
     next();
 }
 
-module.exports = { productValidation, categoriesValidation }
+const existProduct = async (req, res, next) => {
+    const { id } = req.params;
+    const { type, message } = await services.product.getOne({ id });
+    if (type === 404) {
+        return res.status(type).json(message)
+    };
+    next();
+}
+module.exports = { productValidation, categoriesValidation, existProduct }

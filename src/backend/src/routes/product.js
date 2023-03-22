@@ -11,4 +11,7 @@ router.get('/:id', controller.product.getOne);
 router.post('/', middleware.productValidation,
     middleware.categoriesValidation, controller.product.insertProduct)
 
+router.put('/:id', middleware.productValidation, middleware.categoriesValidation,
+    middleware.existProduct, controller.product.updateProduct)
+
 module.exports = router;

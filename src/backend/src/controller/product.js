@@ -17,4 +17,13 @@ const insertProduct = async (req, res) => {
     return res.status(type).json(message)
 };
 
-module.exports = { getAll, getOne, insertProduct }
+const updateProduct = async (req, res) => {
+    const { productName, productPrice, productDescription, discountPercent, categories, image } = req.body;
+    const { id } = req.params;
+
+    const { type, message } = await services.product.updateProduct({ productName, productPrice, productDescription, discountPercent, categories, image, id })
+
+    return res.status(type).json(message);
+}
+
+module.exports = { getAll, getOne, insertProduct, updateProduct }
