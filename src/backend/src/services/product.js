@@ -26,18 +26,41 @@ const getOne = async ({ id }) => {
     return result
 }
 
-const insertProduct = async ({ productName, productPrice, discountPercent, categories, image }) => {
-    const dataValues = await Product.create({ productName, productPrice, discountPercent, image })
+const insertProductCategory = async ({ categories, id }) => {
     const categoryArray = categories.map(async (catId) =>
-        ({ categoryId: catId, productId: dataValues.id }));
+        ({ categoryId: catId, productId: id }));
 
     const newProductCategory = await Promise.all(categoryArray);
     await ProductCategory.bulkCreate(newProductCategory);
+    return { categories, id }
+}
 
-    const result = { type: 201, message: dataValues };
+const insertProduct = async ({ productName, productPrice, discountPercent, categories, image }) => {
+    const { dataValues } = await Product.create({ productName, productPrice, discountPercent, image })
+
+    await insertProductCategory({ categories, id: dataValues.id })
+
+    const message = { ...dataValues, categories }
+
+    const result = { type: 201, message };
 
     return result;
 
 }
 
-module.exports = { getAll, getOne, insertProduct }
+
+const updateProduct = async ({ productName, productPrice, id, discountPercent, categories, image }) => {
+    await Product.update({ productName, productPrice, discountPercent, image }, { where: { id } });
+
+    await ProductCategory.destroy({ where: { productId: id } })
+
+    await insertProductCategory({ categories, id })
+
+    const message = { productName, productPrice, id, discountPercent, categories, image };
+
+    const result = { type: 201, message };
+
+    return result
+}
+
+module.exports = { getAll, getOne, insertProduct, updateProduct }
