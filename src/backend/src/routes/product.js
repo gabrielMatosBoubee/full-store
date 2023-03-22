@@ -8,10 +8,15 @@ router.get('/', controller.product.getAll);
 
 router.get('/:id', controller.product.getOne);
 
-router.post('/', middleware.productValidation,
-    middleware.categoriesValidation, controller.product.insertProduct)
+router.post('/', middleware.validateToken, middleware.hasAuthorization,
+    middleware.productValidation, middleware.categoriesValidation,
+    controller.product.insertProduct)
 
-router.put('/:id', middleware.productValidation, middleware.categoriesValidation,
+router.put('/:id', middleware.validateToken, middleware.hasAuthorization,
+    middleware.productValidation, middleware.categoriesValidation,
     middleware.existProduct, controller.product.updateProduct)
+
+router.delete('/:id', middleware.validateToken, middleware.hasAuthorization,
+    controller.product.deleteProduct)
 
 module.exports = router;
