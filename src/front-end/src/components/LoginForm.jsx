@@ -1,12 +1,16 @@
 import axios from 'axios'; 
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import style from '../styles/LoginForm.module.css'
 
 function LoginForm() {
-    const [email, setEmail] = useState('')
-    const [emailValidation, setEmailValidation] = useState(true)
-    const [passwordValidation, setPasswordValidation] = useState(true)
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [emailValidation, setEmailValidation] = useState(true);
+    const [passwordValidation, setPasswordValidation] = useState(true);
+    const [responseError, setResponseError] = useState('')
+    const [password, setPassword] = useState('');
+
+    const history = useHistory()
 
     const loginValidation = () => {
         setEmailValidation(true);
@@ -30,19 +34,21 @@ function LoginForm() {
             return {error}
         }
 
-        
-        axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
-        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+        try {
+            
+            const response = await axios({
+              url: 'http://localhost:3001/login', 
+              method: 'post',
+              mode: 'no-cors',
+              data: {email, password}
+          })
 
-       axios({
-        url: 'http://localhost:3000/products', 
-        method: 'POST',
-        mode: 'no-cors',
-        data: {name: 'ga'}
-        
-    
-    }).then((response) => console.log(response))
-    //   console.log(t)
+          const token = response.data.token 
+          sessionStorage.setItem('token', token)
+          return history.push('/products')
+        } catch (error) {
+            setResponseError(error.response.data.message)
+        }
     }
  
     return (
@@ -76,6 +82,7 @@ function LoginForm() {
             </p>
             }
             </label>
+            <p className={style.error}>{responseError}</p>
             <button className={style.login} type='button' onClick={loginRequest}>Login</button>
         </form>
     );
