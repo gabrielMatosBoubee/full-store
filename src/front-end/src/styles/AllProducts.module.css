@@ -1,0 +1,61 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #FFFFFF;;
+    width: 250px;
+    height: 300px;
+    margin: 10px;
+    box-shadow: 2.75926px 2.75926px 5.51852px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: wheat;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.allProducts {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.R {
+    color: rgba(176, 179, 187, 1);
+}
+
+.price {
+    position: relative;
+    left: 5px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color:rgba(68, 73, 85, 1);
+}
+
+.button {
+    border-radius: 8px;
+    width: 140px;
+    padding: 6px;
+    size: 16px;
+    line-height: 16.4px;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    border-style: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(49, 194, 141, 1);
+}
