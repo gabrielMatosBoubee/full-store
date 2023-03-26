@@ -1,13 +1,14 @@
 const inicialState = {
-    products: [{productName: '', id: 0, quantity: 0, price: 0, image: ''}],
+    productsCart: [{productName: '', id: 0, quantity: 0, price: 0, image: ''}],
     quantity: 0
   };
   
   const recipeDetails = (state = inicialState, action) => {
     switch (action.type) {
-    case 'test':
+    case 'addCart':
       return ({
-        products: action.payload,
+          productsCart: action.payload.productsCart,
+          quantity: action.payload.quantity,
       });
     default:
       return state;
