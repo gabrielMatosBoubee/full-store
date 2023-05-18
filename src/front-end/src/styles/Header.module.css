@@ -1,8 +1,21 @@
 .Header {
-    display: flex;
-    align-items: center;
     height: 100px;
     background-color: aqua;
+    position: static;
+    width: 100vw;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    height: 100%;
+    width: 90vw;
+}
+
+.title {
+    font-family: "OCR A Std", "monospace";
 }
 
 .cart {
