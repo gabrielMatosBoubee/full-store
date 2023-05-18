@@ -1,0 +1,42 @@
+.Header {
+    height: 100px;
+    background-color: aqua;
+    position: static;
+    width: 100vw;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    height: 100%;
+    width: 90vw;
+}
+
+.title {
+    font-family: "OCR A Std", "monospace";
+}
+
+.cart {
+    position: relative;
+}
+
+.cartIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    background-color: blue;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
