@@ -9,6 +9,7 @@
     height: 300px;
     margin: 10px;
     box-shadow: 2.75926px 2.75926px 5.51852px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
 }
 
 body {
@@ -23,7 +24,7 @@ body {
 
 .allProducts {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
