@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-around;
     padding: 10px;
-    background-color: #FFFFFF;;
+    background-color: #23326b;;
     width: 250px;
     height: 300px;
     margin: 10px;
@@ -13,7 +13,8 @@
 }
 
 body {
-    background-color: wheat;
+    background-color: #0c1228;
+    color: #FFFFFF;
 }
 
 .image {
@@ -40,7 +41,7 @@ body {
     font-weight: 600;
     font-size: 20px;
     line-height: 20px;
-    color:rgba(68, 73, 85, 1);
+    color:black
 }
 
 .button {

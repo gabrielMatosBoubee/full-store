@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCartAction } from '../redux/actions/cart';
 import style from '../styles/AllProducts.module.css'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function AllProducts() {
 
@@ -17,7 +18,6 @@ function AllProducts() {
       if (product) {
         product.quantity = product.quantity + 1;
         const result = productsCart.filter((productCart) => productCart.id !== id);
-        console.log(result)
         result.push(product);
         const allQuantity = quantity + 1;
         return dispatch(addCartAction({productsCart: result, quantity: allQuantity}));
@@ -45,10 +45,10 @@ function AllProducts() {
          {products.map(({id, productName, productPrice, image}) => (
            <div className={style.product} key={id}>
            <h3>{productName}</h3>
-           <img src={image ? image : erroImage} 
-           className={style.image} alt={productName}/>
+           <Link to={`/product/${id}`} ><img src={image ? image : erroImage} 
+           className={style.image} alt={productName}/></Link>
            <p className={style.R}>R$
-              <spam className={style.price}>{String(productPrice).replace('.', ',')}</spam>
+              <span className={style.price}>{String(productPrice).replace('.', ',')}</span>
            </p>
            <button 
               className={style.button} 

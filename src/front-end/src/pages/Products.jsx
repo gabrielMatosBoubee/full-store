@@ -1,20 +1,12 @@
 import React from 'react';
 import AllProducts from '../components/AllProducts';
-import Header from '../components/Header';
-import MenuHamburguerContent from '../components/MenuHamburguerContent';
-import { useSelector } from 'react-redux';
-
+import Layout from '../components/Layout';
 
 function Products() {
-
-    const { isOpen } = useSelector((globalState) => globalState.menuHamburguer)
-
     return (
-        <div>
-           <Header />
-           { isOpen ? <MenuHamburguerContent /> : <></>} 
+        <Layout>
            <AllProducts />
-        </div>
+        </Layout>
     );
 }
 
