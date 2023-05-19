@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCartAction } from '../redux/actions/cart';
 import style from '../styles/AllProducts.module.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import Loading from './Loading';
 
 function AllProducts() {
 
     const [products, setProducts] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const dispatch = useDispatch();
 
@@ -33,6 +35,7 @@ function AllProducts() {
       try {
         const {data} = await axios.get('http://localhost:3001/products');
         setProducts(data)
+        setIsLoading(false)
       } catch (error) {
         console.log(error);
       }
@@ -41,9 +44,11 @@ function AllProducts() {
     useEffect(() => componentDidMount, [])
     const erroImage = 'https://www.quitandadelivery.com/images/geral/sem_foto_big.jpg';
     return (
+      <>
+      { isLoading ? <Loading /> :
         <div className={style.allProducts}>
-         {products.map(({id, productName, productPrice, image}) => (
-           <div className={style.product} key={id}>
+        {products.map(({id, productName, productPrice, image}) => (
+          <div className={style.product} key={id}>
            <h3>{productName}</h3>
            <Link to={`/product/${id}`} ><img src={image ? image : erroImage} 
            className={style.image} alt={productName}/></Link>
@@ -59,7 +64,9 @@ function AllProducts() {
            </div>
            )
            )}    
-        </div>
+           </div>
+    }
+      </>
     );
 }
 

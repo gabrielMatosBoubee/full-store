@@ -4,10 +4,13 @@ import style from '../styles/Product.module.css'
 import Layout from '../components/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCartAction } from '../redux/actions/cart';
+import Loading from '../components/Loading';
 
 function Product({match: { params: { id } }}) {
 
     const [product, setProduct] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+
     const dispatch = useDispatch();
     const { quantity, productsCart } = useSelector((globalState) => globalState.cart);
 
@@ -28,9 +31,13 @@ function Product({match: { params: { id } }}) {
     }
 
     const componentDidMount = async () => {
-      const {data} = await api.get(`/products/${id}`)
-      console.log(data)
-      setProduct(data)
+      try {
+        const { data } = await api.get(`/products/${id}`)
+        setProduct(data)
+        setIsLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     useEffect(() => componentDidMount, [])
@@ -39,6 +46,8 @@ function Product({match: { params: { id } }}) {
 
     return (
         <Layout>
+          { isLoading ? <Loading /> :
+          <>
           <h1>{product.productName}</h1>
           <img className={style.img} src={product.image ? product.image : erroImage} 
            alt={product.productName}/> 
@@ -64,6 +73,8 @@ function Product({match: { params: { id } }}) {
                 </button>
             </div>
           </div>
+          </>
+          }
         </Layout>
     );
 }
