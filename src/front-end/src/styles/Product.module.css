@@ -1,0 +1,82 @@
+.img {
+    width: 400px;
+    height: 50vh;
+    border-radius: 15px;
+    margin: 10px 0 10px 0;
+}
+
+.description {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.button {
+    border-radius: 8px;
+    width: 400px;
+    padding: 6px;
+    size: 16px;
+    line-height: 16.4px;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    border-style: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(49, 194, 141, 1);
+}
+
+.R {
+    color: rgba(176, 179, 187, 1);
+}
+
+.price {
+    position: relative;
+    left: 5px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color:rgba(68, 73, 85, 1);
+}
+
+.Container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90vw;
+}
+
+.title::after {
+    content: '';
+    height: 2px;
+    display: block;
+    background: rgb(159,25,25);
+    background: linear-gradient(90deg, rgba(159,25,25,1) 0%, rgba(105,24,31,1) 20%, rgba(12,18,40,1) 100%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip:content-box;
+    margin: 20px 0 20px 0;
+    width: 90vw;
+}
+
+#buy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px 0 60px 0;
+}
+
+@media (max-width: 600px) {
+    .img {
+        height: 50vh;
+        width: 100vw;
+    }
+
+    .button {
+        width: 90vw;
+    }
+}
