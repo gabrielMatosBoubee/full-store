@@ -21,7 +21,7 @@ function MenuHamburguerContent() {
             <span className={style.link} onClick={() => history.push('/categories')}>
                 <TbCategory className={style.icons} /> Category
             </span>
-            <a href='https://www.linkedin.com/in/gabriel-matos-boubee/' target='blank' style={{'text-decoration': "none"}}>
+            <a href='https://www.linkedin.com/in/gabriel-matos-boubee/' target='blank' style={{'textDecoration': "none"}}>
                 <span className={style.link}><BiSupport className={style.icons} /> Enter in contact</span>
             </a>
         </div>

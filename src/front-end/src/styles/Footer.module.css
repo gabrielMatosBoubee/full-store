@@ -1,0 +1,36 @@
+.information {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.personalInformation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.personalItens {
+    margin: 0 5px 0 5px;
+}
+
+.upperFooter {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 90vw;
+}
+
+.upperFooter::after {
+    content: '';
+    height: 2px;
+    display: block; background: rgb(159,25,25);
+    background: linear-gradient(90deg, rgba(159,25,25,1) 0%, rgba(105,24,31,1) 20%, rgba(12,18,40,1) 100%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip:content-box;
+    margin: 20px 0 20px 0;
+    width: 100%;
+}
